@@ -62,7 +62,6 @@ public final class daynight extends JavaPlugin {
         switch (et) {
             case SKELETON:
             case SPIDER:
-            case ZOMBIE_HORSE:
             case ENDERMAN:
             case DROWNED:
             case HUSK:
