@@ -1,0 +1,7 @@
+name: daynight
+version: @version@
+main: kr.kua.daynight
+api-version: 1.16
+authors: [ Kua_ ]
+description: During the day, monsters don't come out and they die.
+website: https://github.com/Kuass
