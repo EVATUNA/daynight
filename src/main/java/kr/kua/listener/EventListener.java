@@ -9,18 +9,7 @@ public class EventListener implements Listener {
 
     @EventHandler
     public void onCreatureSpawnEvent(CreatureSpawnEvent e) {
-        if(!daynight.isAlreadyBlocked) return;
-
-        switch (e.getEntity().getName()) {
-            case "Skeleton":
-            case "Spider":
-            case "Zombie":
-            case "Enderman":
-            case "Drowned":
-            case "Husk":
-            case "Stray":
-                e.setCancelled(true);
-                break;
-        }
+        if (!daynight.isAlreadyBlocked) return;
+        if (daynight.isNeedRemovedMob(e.getEntity().getType())) e.setCancelled(true);
     }
 }

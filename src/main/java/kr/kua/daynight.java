@@ -2,6 +2,8 @@ package kr.kua;
 
 import kr.kua.listener.EventListener;
 import org.bukkit.World;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -41,16 +43,36 @@ public final class daynight extends JavaPlugin {
                                     // Day
                                     if (!isAlreadyBlocked) {
                                         isAlreadyBlocked = true;
+                                        for (Entity entity : world.getEntities())
+                                            if (entity.isValid() && isNeedRemovedMob(entity.getType())) entity.remove();
+
                                         for (Player player : daynight.getInstance().getServer().getOnlinePlayers())
-                                            player.sendTitle("§6낮", "§e몬스터가 사라집니다..");
+                                            player.sendTitle("§6낮", "§e몬스터가 나타나지 않습니다..");
                                     }
                                 }
                             } else break;
                         }
 
                     }
-                }, 0L, 600L
+                }, 0L, 60L
         );
+    }
+
+    public static Boolean isNeedRemovedMob(EntityType et) {
+        switch (et) {
+            case SKELETON:
+            case SPIDER:
+            case ZOMBIE_HORSE:
+            case ENDERMAN:
+            case DROWNED:
+            case HUSK:
+            case STRAY:
+            case ZOMBIE:
+            case CREEPER:
+                return true;
+            default:
+                return false;
+        }
     }
 
     @Override
