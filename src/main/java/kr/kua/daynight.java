@@ -36,7 +36,7 @@ public final class daynight extends JavaPlugin {
                                     // Night
                                     if (isAlreadyBlocked) {
                                         isAlreadyBlocked = false;
-                                        for (Player player : daynight.getInstance().getServer().getOnlinePlayers())
+                                        for (Player player : world.getPlayers())
                                             player.sendTitle("§6밤", "§e몬스터가 나타납니다..");
                                     }
                                 } else {
@@ -46,7 +46,7 @@ public final class daynight extends JavaPlugin {
                                         for (Entity entity : world.getEntities())
                                             if (entity.isValid() && isNeedRemovedMob(entity.getType())) entity.remove();
 
-                                        for (Player player : daynight.getInstance().getServer().getOnlinePlayers())
+                                        for (Player player : world.getPlayers())
                                             player.sendTitle("§6낮", "§e몬스터가 나타나지 않습니다..");
                                     }
                                 }
