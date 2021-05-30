@@ -68,6 +68,7 @@ public final class daynight extends JavaPlugin {
             case STRAY:
             case ZOMBIE:
             case CREEPER:
+            case PHANTOM:
                 return true;
             default:
                 return false;
