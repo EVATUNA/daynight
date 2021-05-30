@@ -50,9 +50,8 @@ public final class daynight extends JavaPlugin {
                                             player.sendTitle("§6낮", "§e몬스터가 나타나지 않습니다..");
                                     }
                                 }
-                            } else break;
+                            }
                         }
-
                     }
                 }, 0L, 60L
         );
