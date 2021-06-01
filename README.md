@@ -11,6 +11,7 @@
     Drowned
     Husk
     Stray
-    CREEPER
+    Creeper
+    Phantom
 
 
