@@ -30,25 +30,33 @@ public final class daynight extends JavaPlugin {
                     @Override
                     public void run() {
                         for (World world : daynight.getInstance().getServer().getWorlds()) {
-                            if (daynight.getInstance().config.isIncludedWorld(world.getName())) {
+                            if (world.getName() == "spawn" || daynight.getInstance().config.isIncludedWorld(world.getName())) {
                                 long worldTime = world.getTime();
+
                                 if (worldTime > 14000 && worldTime < 22500) {
                                     // Night
                                     if (isAlreadyBlocked) {
                                         isAlreadyBlocked = false;
-                                        for (Player player : world.getPlayers())
-                                            player.sendTitle("§6밤", "§e몬스터가 나타납니다..");
+
+                                        long worldFullTime = world.getFullTime();
+                                        if (worldFullTime >= 110000 && worldFullTime <= 118500) { // 그믐달 시간대
+                                            for (Player player : world.getPlayers())
+                                                player.sendTitle("§4피의 달", "§6더욱 강력한 몬스터가 나타납니다..");
+                                        } else {
+                                            for (Player player : world.getPlayers())
+                                                player.sendTitle("§6밤", "§e몬스터가 나타납니다..");
+                                        }
                                     }
                                 } else {
                                     // Day
                                     if (!isAlreadyBlocked) {
                                         isAlreadyBlocked = true;
-                                        for (Entity entity : world.getEntities())
-                                            if (entity.isValid() && isNeedRemovedMob(entity.getType())) entity.remove();
-
                                         for (Player player : world.getPlayers())
                                             player.sendTitle("§6낮", "§e몬스터가 나타나지 않습니다..");
                                     }
+
+                                    for (Entity entity : world.getEntities())
+                                        if (entity.isValid() && isNeedRemovedMob(entity.getType())) entity.remove();
                                 }
                             }
                         }
