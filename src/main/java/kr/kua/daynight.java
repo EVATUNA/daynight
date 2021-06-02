@@ -12,7 +12,10 @@ public final class daynight extends JavaPlugin {
     private Config config;
 
     private static daynight plugin;
-    public static daynight getInstance() { return plugin; }
+
+    public static daynight getInstance() {
+        return plugin;
+    }
 
     public static Boolean isAlreadyBlocked = false;
 
@@ -38,14 +41,8 @@ public final class daynight extends JavaPlugin {
                                     if (isAlreadyBlocked) {
                                         isAlreadyBlocked = false;
 
-                                        long worldFullTime = world.getFullTime();
-                                        if (worldFullTime >= 110000 && worldFullTime <= 118500) { // 그믐달 시간대
-                                            for (Player player : world.getPlayers())
-                                                player.sendTitle("§4피의 달", "§6더욱 강력한 몬스터가 나타납니다..");
-                                        } else {
-                                            for (Player player : world.getPlayers())
-                                                player.sendTitle("§6밤", "§e몬스터가 나타납니다..");
-                                        }
+                                        for (Player player : world.getPlayers())
+                                            player.sendTitle("§6밤", "§e몬스터가 나타납니다..");
                                     }
                                 } else {
                                     // Day
